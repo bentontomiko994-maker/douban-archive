@@ -1,91 +1,91 @@
-# Douban Archive
+# Douban Archive / 豆瓣本地备份
 
-A local-first browser extension for exporting your own Douban book, movie, and music collections.
+一个本地优先的浏览器插件，用来导出你自己的豆瓣书影音收藏数据。
 
-Douban Archive is built for people who have spent years recording their reading, watching, listening, and cultural life on Douban, and want a private local copy of their own data.
+这个项目面向长期使用豆瓣记录阅读、观影、听歌和文化生活的人。它的目标不是“爬别人的数据”，而是帮助用户把自己多年发布和积累的内容保存到本地，避免平台变化、功能下线或账号风险导致个人记忆资产丢失。
 
-[中文说明](README.zh-CN.md)
+[English README](README.zh-CN.md)
 
-## Status
+## 当前状态
 
-This project is currently an MVP. The first version focuses on the most stable and valuable data category: book, movie, and music collection lists. v0.3.1 fixes Chinese text mojibake when opening exported CSV files directly in Excel.
+目前是 MVP 版本。第一版优先做最稳定、最有价值的部分：书影音收藏列表；v0.3.1 修复了 Excel 打开 CSV 时中文乱码的问题。
 
-Supported:
+已支持：
 
-- Export books: read, wish to read, currently reading
-- Export movies: watched, wish to watch, currently watching
-- Export music: listened, wish to listen, currently listening
-- Experimental export: statuses and notes
-- Experimental export: long reviews
-- Rating export: normalized to a 1-5 star scale with `ratingValue`, `ratingMax`, and `ratingPercent`
-- Short comment export from collection pages
-- Full text export for notes and long reviews
-- Export formats: JSON, Excel CSV, Markdown
-- Optional detail-page fetch for item title and summary
-- Background export: closing the popup or switching tabs does not stop the export
-- Local-only execution inside your browser
-- No server, no external account, no cloud upload
+- 导出图书：读过、想读、在读
+- 导出电影：看过、想看、在看
+- 导出音乐：听过、想听、在听
+- 实验性导出：广播、日记
+- 实验性导出：长评 / 评价
+- 导出评星：统一输出为 1-5 星，并保留 `ratingValue`、`ratingMax`、`ratingPercent`
+- 导出短评：书影音收藏页中你写过的简短评价
+- 导出正文：日记和长评会自动抓取详情页正文
+- 导出格式：JSON、Excel CSV、Markdown
+- 可选抓取条目详情页标题与简介
+- 后台导出：关闭插件弹窗或切换页面后，任务仍会继续运行
+- 完全在本地浏览器中运行
+- 不需要服务器、不需要第三方账号、不上传云端
 
-Not included yet:
+暂未支持：
 
-- Group posts and comments
-- Reviews and notes
-- Full media image archiving
-- Incremental backup and resume
+- 小组帖子与评论
+- 书评、影评、乐评
+- 图片与媒体文件完整归档
+- 断点续传与增量备份
 
-## Privacy
+## 隐私说明
 
-Douban Archive runs locally in your browser. It uses your existing Douban login session to request pages that you can already access manually.
+Douban Archive 只在你的浏览器本地运行。它使用你当前浏览器里的豆瓣登录状态，请求你本来就可以手动打开的页面。
 
-The extension does not upload your data anywhere. Exported files are downloaded directly to your computer.
+插件不会把数据上传到任何服务器。导出文件会直接保存到你的电脑。
 
-More:
+更多说明：
 
-- [Privacy Policy](PRIVACY.md)
-- [Security Policy](SECURITY.md)
-- [Risk and Release Guide](docs/en/RISK_AND_RELEASE_GUIDE.md)
-- [User Guide](docs/en/USER_GUIDE.md)
+- [隐私政策](PRIVACY.md)
+- [安全政策](SECURITY.md)
+- [风险与发布指南](docs/zh-CN/RISK_AND_RELEASE_GUIDE.md)
+- [用户手册](docs/zh-CN/USER_GUIDE.md)
 
-## Compliance Boundary
+## 合规边界
 
-This tool is designed for personal data backup. It does not bypass login, CAPTCHA, access controls, paywalls, or platform restrictions. If Douban asks for verification, you should complete it manually in your browser and then run the export again.
+这个工具用于个人数据备份，不用于绕过登录、验证码、访问权限、付费限制或平台风控。如果豆瓣要求验证，请先在浏览器中手动完成验证，再重新运行导出。
 
-The extension includes a request delay setting to reduce pressure on Douban and lower the chance of failed exports.
+插件提供请求间隔设置，用来降低请求压力，也减少导出失败的概率。
 
-## Install Locally
+## 本地安装
 
-1. Download and unzip this project, or clone the repository.
-2. Find the `extension` folder.
-3. Open Chrome, Edge, Arc, or another Chromium browser.
-4. Go to `chrome://extensions`.
-5. Enable `Developer mode`.
-6. Click `Load unpacked`.
-7. Select the `extension` folder.
-8. Log in to Douban in the same browser.
-9. Click the Douban Archive icon in the browser toolbar.
+1. 下载项目压缩包并解压，或者克隆本仓库。
+2. 找到解压后的 `extension` 文件夹。
+3. 打开 Chrome、Edge、Arc 或其他 Chromium 浏览器。
+4. 进入 `chrome://extensions`。
+5. 打开右上角的 `开发者模式`。
+6. 点击 `加载已解压的扩展程序`。
+7. 选择刚才的 `extension` 文件夹。
+8. 在同一个浏览器里登录豆瓣。
+9. 点击浏览器工具栏里的 Douban Archive 图标即可使用。
 
-## Usage
+## 使用方式
 
-1. Choose the export scopes.
-2. Use `Select All` to export everything, or select books, movies, music, writing, and reviews by category.
-3. Choose JSON, Excel CSV, or Markdown.
-4. Optional: enable detail-page fetching. Notes and reviews fetch full text by default.
-5. Click `Start Export`.
-6. You can close the popup or switch tabs after export starts; the background task keeps running.
-7. Click the extension icon again to check progress.
-8. Save the generated file locally.
+1. 选择导出范围。
+2. 可使用 `全选` 一键导出全部内容，也可以用 `图书`、`电影`、`音乐`、`广播日记`、`评价` 做分类自选。
+3. 选择 JSON、Excel CSV 或 Markdown。
+4. 可选：勾选抓取条目详情页。日记和长评默认会抓正文，不依赖这个选项。
+5. 点击 `开始导出`。
+6. 导出开始后，可以关闭弹窗或切换页面，后台任务会继续运行。
+7. 重新点击插件图标，可以查看当前进度。
+8. 将生成的文件保存到本地。
 
-JSON is recommended for future AI workflows because it preserves the most structure.
+如果未来要结合 AI 使用，推荐优先导出 JSON，因为 JSON 保留的数据结构最完整。
 
-## Which Format Should I Use?
+## 导出格式怎么选
 
-- JSON: best for AI, data analysis, and future automation. It keeps structured fields such as type, status, rating, rating ratio, tags, short comments, long review content, note content, URLs, and dates. Recommended as the primary backup format.
-- Markdown: best for human reading, Obsidian, personal knowledge bases, and GitHub archives. AI can read it well, but the structure is less strict than JSON.
-- Excel CSV: best for spreadsheets, filtering, and statistics. Useful for ratings, tags, and dates, but less suitable for long-form text. Exported CSV files include a UTF-8 BOM so Excel should display Chinese text correctly when opened directly.
+- JSON：最适合 AI、数据分析和后续程序处理。它保留字段结构，比如类型、状态、评分、评分比例、标签、短评、长评正文、日记正文、链接和时间。推荐作为主备份格式。
+- Markdown：最适合人类阅读，也适合放进 Obsidian、个人知识库或 GitHub 仓库。AI 也能读，但结构不如 JSON 稳定。
+- Excel CSV：最适合用 Excel、Numbers、Google Sheets 做表格筛选和统计。适合分析评分、年份、标签等字段，但不适合保存复杂长文本。导出的 CSV 已加入 UTF-8 BOM，Excel 直接打开时应能正确显示中文。
 
-Recommendation: export JSON for serious backup, Markdown for reading, and Excel CSV for spreadsheet analysis.
+建议：正式备份时至少导出一份 JSON；如果你想自己阅读，再额外导出 Markdown；如果要做表格统计，再导出 Excel CSV。
 
-## Repository Structure
+## 仓库结构
 
 ```text
 extension/
@@ -100,29 +100,29 @@ README.md
 README.zh-CN.md
 ```
 
-## Roadmap
+## 后续路线图
 
-- Add export support for diaries
-- Add export support for statuses / broadcasts
-- Add export support for reviews
-- Add resumable export state
-- Add local archive index
-- Add AI-ready profile generation
-- Generate a recommendation preference summary from exported data
-- Add bilingual documentation site
-- Add tests with saved HTML fixtures
+- 支持导出豆瓣日记
+- 支持导出广播 / 记录
+- 支持导出书评、影评、乐评
+- 支持断点续传
+- 支持本地归档索引
+- 支持生成 AI 可读的兴趣画像
+- 支持导出后生成“推荐偏好摘要”
+- 支持中英双语项目网站
+- 使用保存的 HTML 样本补自动化测试
 
-## AI Workflow Ideas
+## 和 AI 结合的方向
 
-After exporting your data, future versions can generate:
+导出数据之后，后续可以生成：
 
-- Interest profile
-- Reading and viewing history timeline
-- Recommendation seed file
-- Personal knowledge graph
-- Markdown archive for Obsidian
-- Dataset for local AI assistants
+- 个人兴趣画像
+- 阅读与观影时间线
+- 推荐系统种子文件
+- 个人知识图谱
+- Obsidian Markdown 归档
+- 本地 AI 助手可读取的数据集
 
-## License
+## 开源协议
 
-License not selected yet. If this project becomes public, MIT or AGPL can be considered depending on whether the goal is maximum reuse or stronger open-source reciprocity.
+暂未选择协议。如果未来正式开源，可以根据目标选择 MIT 或 AGPL：MIT 更利于传播和复用，AGPL 更强调开源互惠。
