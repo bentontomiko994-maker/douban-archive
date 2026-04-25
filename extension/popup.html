@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Douban Archive</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Douban Archive</p>
+          <h1>豆瓣本地备份</h1>
+        </div>
+        <span class="pill">MVP</span>
+      </header>
+
+      <section class="panel">
+        <label class="field">
+          <span>豆瓣用户 ID</span>
+          <input id="userId" type="text" placeholder="例如：12345678 或你的豆瓣用户名" autocomplete="off">
+        </label>
+        <p class="hint">请先在浏览器中登录豆瓣。导出任务会在后台运行，关闭弹窗或切换页面也不会中断。</p>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>导出范围</h2>
+          <div class="button-row">
+            <button id="selectAll" class="ghost" type="button">全选</button>
+            <button id="selectCore" class="ghost" type="button">核心</button>
+            <button id="clearAll" class="ghost" type="button">清空</button>
+          </div>
+        </div>
+        <div class="button-row filter-row" aria-label="分类快捷选择">
+          <button class="ghost filter" type="button" data-type="book">图书</button>
+          <button class="ghost filter" type="button" data-type="movie">电影</button>
+          <button class="ghost filter" type="button" data-type="music">音乐</button>
+          <button class="ghost filter" type="button" data-type="writing">广播日记</button>
+          <button class="ghost filter" type="button" data-type="review">评价</button>
+        </div>
+        <div id="scopeList" class="scope-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>导出格式</h2>
+        </div>
+        <div class="format-row" role="radiogroup" aria-label="导出格式">
+          <label><input type="radio" name="format" value="json" checked> JSON</label>
+          <label><input type="radio" name="format" value="csv"> Excel CSV</label>
+          <label><input type="radio" name="format" value="md"> Markdown</label>
+        </div>
+        <label class="check-row">
+          <input id="includeDetails" type="checkbox">
+          <span>同时抓取条目详情页标题与简介</span>
+        </label>
+        <label class="field compact">
+          <span>请求间隔，毫秒</span>
+          <input id="delayMs" type="number" min="1200" step="100" value="2200">
+        </label>
+      </section>
+
+      <section class="actions">
+        <button id="startExport" class="primary" type="button">开始导出</button>
+        <button id="stopExport" class="secondary" type="button" disabled>停止</button>
+      </section>
+
+      <section class="progress" aria-live="polite">
+        <div class="bar"><span id="progressBar"></span></div>
+        <p id="statusText">等待开始。</p>
+        <pre id="log"></pre>
+      </section>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

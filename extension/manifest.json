@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Douban Archive",
+  "description": "Export your own Douban book, movie, and music collections to local files.",
+  "version": "0.3.1",
+  "action": {
+    "default_title": "Douban Archive",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["downloads", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://book.douban.com/*",
+    "https://movie.douban.com/*",
+    "https://music.douban.com/*",
+    "https://www.douban.com/*"
+  ]
+}
