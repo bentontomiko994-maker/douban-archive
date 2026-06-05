@@ -36,12 +36,12 @@ NEW_FILING_EXIT_CODE = 10
 SEARCH_PAGE = "https://www1.hkexnews.hk/search/titlesearch.xhtml?lang=en"
 PREFIX_BASE = "https://www1.hkexnews.hk/search/prefix.do"
 SEARCH_URL = "https://www1.hkexnews.hk/search/titlesearchservlet.do"
-# 不同查询形式各试一遍（autocomplete 对前导零/类型敏感）。
+# HKEX 披露易反爬较强（Actions IP 上 prefix.do 常返回空结果集）。
+# 此处为“尽力而为”：单次探测，失败即静默跳过——可靠的财报触发由
+# earnings_window.py（业绩日历）确定性地负责。若已知正确 stockId，
+# 可直接填 FALLBACK_STOCK_ID 跳过解析。
 PREFIX_CANDIDATES = [
     {"lang": "en", "type": "A", "name": "09992", "market": "SEHK"},
-    {"lang": "en", "type": "A", "name": "9992", "market": "SEHK"},
-    {"lang": "en", "type": "A", "name": "POP MART", "market": "SEHK"},
-    {"lang": "en", "type": "S", "name": "09992", "market": "SEHK"},
 ]
 
 # HKEX 披露易需要先访问搜索页拿到 JSESSIONID cookie，否则接口返回空。

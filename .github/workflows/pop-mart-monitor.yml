@@ -42,13 +42,17 @@ jobs:
       - name: 抓取行情快照（失败不阻塞）
         run: python3 pop-mart-monitor/scripts/fetch_quote.py || true
 
-      - name: 检测新财报/公告
+      - name: 检测新财报/公告（HKEX，尽力而为）
         id: filings
         run: |
           set +e
           python3 pop-mart-monitor/scripts/check_filings.py
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           set -e
+
+      - name: 判断是否处于业绩披露窗口期（确定性触发）
+        id: cal
+        run: python3 pop-mart-monitor/scripts/earnings_window.py
 
       - name: 重新生成汇总报告
         run: python3 pop-mart-monitor/scripts/generate_report.py
@@ -66,23 +70,23 @@ jobs:
             git push
           fi
 
-      - name: 发现新公告时开 issue 提醒
-        if: steps.filings.outputs.new_filing == 'true'
+      - name: 财报窗口期或检测到新公告时开 issue 提醒
+        if: steps.filings.outputs.new_filing == 'true' || steps.cal.outputs.in_window == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           TITLES: ${{ steps.filings.outputs.new_titles }}
+          WINDOW: ${{ steps.cal.outputs.window_msg }}
         run: |
+          # 去重：已有开放的监控提醒 issue 就跳过，避免每日重复开。
+          existing=$(gh issue list --state open --search "泡泡玛特业绩 in:title" --json number --jq 'length' 2>/dev/null || echo 0)
+          if [ "${existing:-0}" != "0" ]; then
+            echo "已存在开放的提醒 issue，跳过。"
+            exit 0
+          fi
+          reason=""
+          [ -n "${WINDOW}" ] && reason="${reason}- 处于业绩披露窗口期：${WINDOW}\n"
+          [ -n "${TITLES}" ] && reason="${reason}- 检测到 HKEX 新公告：${TITLES}\n"
           gh issue create \
-            --title "📢 泡泡玛特新公告/财报检测：请更新数据并刷新汇总" \
-            --body "检测到泡泡玛特发布了新的 HKEX 公告：
-
-          ${TITLES}
-
-          **下一步**：
-          1. 若为业绩/财报，更新 \`pop-mart-monitor/data/financials.json\` 与 \`overseas_stores.json\`（追加新期次）。
-          2. 视情况刷新 \`peers.json\` 估值与对标数据。
-          3. 运行 \`python3 pop-mart-monitor/scripts/generate_report.py\` 重新生成报告。
-          4. 提交并关闭本 issue。
-
-          _由 Pop Mart Monitor 工作流自动创建。_" \
-            --label "pop-mart" || echo "开 issue 失败（可能缺少 label 或权限），不阻塞工作流。"
+            --title "📢 泡泡玛特业绩提醒：请更新数据并刷新汇总" \
+            --body "$(printf "触发原因：\n${reason}\n**下一步**：\n1. 若为业绩/财报，更新 \`pop-mart-monitor/data/financials.json\` 与 \`overseas_stores.json\`（追加新期次）。\n2. 视情况刷新 \`peers.json\` 估值与对标，并校准 \`earnings_calendar.json\` 下一期日期。\n3. 运行 \`python3 pop-mart-monitor/scripts/generate_report.py\` 重新生成报告。\n4. 提交并关闭本 issue。\n\n_由 Pop Mart Monitor 工作流自动创建。_")" \
+            || echo "开 issue 失败（权限或接口），不阻塞工作流。"

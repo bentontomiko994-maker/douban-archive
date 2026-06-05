@@ -24,12 +24,14 @@ pop-mart-monitor/
 │   ├── overseas_stores.json  #   海外分区域营收与门店、国家覆盖、海外盈利能力
 │   ├── peers.json            #   对标公司（4 类）数据
 │   ├── sources.json          #   数据来源登记（可溯源）
+│   ├── earnings_calendar.json#   业绩披露日历（驱动窗口期提醒）
 │   ├── seen_filings.json     #   已知公告基线（check_filings 维护）
 │   └── quote_snapshot.json   #   行情快照（fetch_quote 生成，自动）
 ├── scripts/                  # 纯标准库，无需 pip install
 │   ├── lib.py                #   加载/格式化工具
 │   ├── generate_report.py    #   数据 -> reports/pop-mart-report.md
-│   ├── check_filings.py      #   检测 HKEX 新公告，发现则退出码 10
+│   ├── earnings_window.py    #   是否处于业绩披露窗口期（确定性触发）
+│   ├── check_filings.py      #   尝试检测 HKEX 新公告（尽力而为）
 │   └── fetch_quote.py        #   抓取 9992.HK 及同业实时行情
 └── reports/
     └── pop-mart-report.md    # 自动生成的汇总报告
@@ -66,7 +68,12 @@ python3 pop-mart-monitor/scripts/check_filings.py
 
 - **定时**：每周一基线刷新；**3 月 / 8 月**（年报、中报窗口）每日运行
 - **触发即跑**：`pop-mart-monitor/**` 有改动时自动重算
-- **新财报检测**：检测到 HKEX 新公告自动开 issue 提醒更新数据
+- **实时行情**：`fetch_quote.py` 抓取 9992.HK 及同业现价（Yahoo v8 +
+  Stooq 兜底，CI 实测可用），并现算泡泡玛特实时市值，写入报告「实时行情快照」节
+- **业绩窗口提醒（可靠触发）**：`earnings_window.py` 依据 `data/earnings_calendar.json`，
+  在业绩披露窗口期自动开 issue 提醒更新数据（去重，避免重复开）
+- **HKEX 公告检测（尽力而为）**：`check_filings.py` 尝试抓披露易新公告；
+  披露易反爬较强，CI 环境常被挡，失败时静默跳过、不阻塞——可靠触发以业绩日历为准
 - **自动回写**：刷新后的报告/行情快照自动提交回仓库
 
 > 注意：GitHub 的 `schedule` 定时器**只在默认分支生效**。本工作流合并到 `main`
