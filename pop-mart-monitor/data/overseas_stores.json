@@ -1,0 +1,53 @@
+{
+  "_comment": "泡泡玛特海外/分区域门店与营收拆解。单位：营收=亿元人民币；门店=家。net_add 为当期净增门店。每次财报后更新对应期次。",
+  "as_of": "FY2025",
+  "global_summary": {
+    "stores_total": 630,
+    "stores_overseas": 185,
+    "stores_china": 445,
+    "countries_and_regions": 20,
+    "vending_machines": 2637,
+    "overseas_net_add": 95
+  },
+  "by_region_fy2025": [
+    {
+      "region": "美洲 (Americas)",
+      "core_markets": "美国为核心，加拿大、墨西哥等",
+      "revenue": 68.1,
+      "revenue_yoy": 7.484,
+      "stores": 64,
+      "net_add": 42,
+      "note": "增速最快区域。门店进驻曼哈顿等核心商圈，线上+线下同步放量。"
+    },
+    {
+      "region": "亚太 (Asia-Pacific, 不含中国内地)",
+      "core_markets": "泰国、新加坡、马来西亚、印尼、越南、日本、韩国、港澳台等",
+      "revenue": 80.1,
+      "revenue_yoy": 1.576,
+      "stores": 85,
+      "net_add": 31,
+      "note": "海外营收体量最大的区域，东南亚为基本盘。"
+    },
+    {
+      "region": "欧洲及其他 (Europe & Others)",
+      "core_markets": "英国、法国、丹麦、荷兰、德国等；中东（卡塔尔多哈）",
+      "revenue": 14.5,
+      "revenue_yoy": 5.063,
+      "stores": 36,
+      "net_add": 22,
+      "note": "基数低、增速高。法国为欧洲重镇；年内首入德国、丹麦及中东市场。"
+    }
+  ],
+  "overseas_profitability": {
+    "_comment": "海外盈利能力指标。最近一次明确披露为 2024H1 口径，后续财报如更新请覆盖。",
+    "gross_margin": 0.64,
+    "net_margin": 0.212,
+    "as_of": "2024H1",
+    "note": "海外毛利率略低于集团整体，但净利率可观；随规模效应与本地化运营成熟有提升空间。"
+  },
+  "country_footprint_examples": [
+    "美国", "加拿大", "英国", "法国", "德国", "丹麦", "荷兰", "意大利",
+    "新加坡", "泰国", "马来西亚", "印度尼西亚", "越南", "菲律宾",
+    "日本", "韩国", "澳大利亚", "新西兰", "卡塔尔", "中国港澳台"
+  ]
+}

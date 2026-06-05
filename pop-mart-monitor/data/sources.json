@@ -1,0 +1,26 @@
+{
+  "_comment": "数据来源登记。每条数据尽量可溯源。retrieved 为抓取日期。",
+  "retrieved": "2026-06-05",
+  "primary": [
+    {"title": "泡泡玛特 2025 年报 / 全年业绩公告", "publisher": "泡泡玛特投资者关系", "url": "https://www.popmart.com/", "note": "一手财报，最高优先级"},
+    {"title": "INTERIM RESULTS ANNOUNCEMENT (6M ended 30 June 2025)", "publisher": "Pop Mart / HKEX", "url": "https://prod-out-res.popmart.com/cms/INTERIM_RESULTS_ANNOUNCEMENT_FOR_THE_SIX_MONTHS_ENDED_30_JUNE_2025_c6a7290528.pdf"}
+  ],
+  "media": [
+    {"title": "泡泡玛特2025年营收371.2亿元，LABUBU成百亿IP", "publisher": "21经济网", "url": "https://www.21jingji.com/article/20260325/herald/6229eb4dbcb491339ed0ed85aa06f33d.html"},
+    {"title": "泡泡玛特2025年营收首破300亿元，海外收入占比超四成", "publisher": "新京报", "url": "https://www.bjnews.com.cn/detail/1774430105129383.html"},
+    {"title": "泡泡玛特2025年净利润同比暴增293%", "publisher": "华尔街见闻", "url": "https://wallstreetcn.com/articles/3768334"},
+    {"title": "Pop Mart's 2025 revenue tops 37 billion yuan, overseas sales exceed 40%", "publisher": "Guangming Online", "url": "https://en.gmw.cn/2026-03/27/content_38675346.htm"},
+    {"title": "泡泡玛特发布2024全年财报 营收破百亿大关", "publisher": "新华网", "url": "http://www.news.cn/tech/20250326/76d665d54199492f8980a6f26fddd6a1/c.html"},
+    {"title": "财报2024｜海外市场营收破10亿，泡泡玛特的出海加速度", "publisher": "华尔街见闻", "url": "https://wallstreetcn.com/articles/3710925"}
+  ],
+  "peers": [
+    {"title": "名创优品2025年业绩：全球门店达8485家，同店销售正增长", "publisher": "界面新闻", "url": "https://m.jiemian.com/article/14193597.html"},
+    {"title": "TOP TOY / 52TOYS 对比", "publisher": "新浪财经", "url": "https://finance.sina.com.cn/roll/2025-03-28/doc-inerfitm1197369.shtml"},
+    {"title": "Mattel / Hasbro / Sanrio / Bandai Namco valuation", "publisher": "companiesmarketcap / macrotrends / stockanalysis", "url": "https://companiesmarketcap.com/"}
+  ],
+  "quote": [
+    {"title": "Pop Mart 9992.HK 实时行情", "publisher": "Yahoo Finance", "url": "https://finance.yahoo.com/quote/9992.HK/"},
+    {"title": "泡泡玛特(09992) 估值/基本面", "publisher": "雪球 / 理杏仁", "url": "https://xueqiu.com/S/09992"}
+  ],
+  "disclaimer": "媒体二手数据可能与最终经审计年报存在口径差异；估值/市值随市场实时波动。本系统仅用于信息追踪，不构成投资建议。"
+}

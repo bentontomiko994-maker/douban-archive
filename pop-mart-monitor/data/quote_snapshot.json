@@ -1,0 +1,48 @@
+{
+  "as_of": "2026-06-05T02:52:28.091271+00:00",
+  "quotes": {
+    "9992.HK": {
+      "price": 177.5,
+      "currency": null,
+      "change_pct": -0.019337016574585635,
+      "source": "stooq",
+      "name": "泡泡玛特 Pop Mart",
+      "market_cap_usd_b": 30.5
+    },
+    "MAT": {
+      "price": 14.19,
+      "currency": null,
+      "change_pct": -0.022053756030323935,
+      "source": "stooq",
+      "name": "美泰 Mattel"
+    },
+    "HAS": {
+      "price": 84.45,
+      "currency": null,
+      "change_pct": -0.006470588235294084,
+      "source": "stooq",
+      "name": "孩之宝 Hasbro"
+    },
+    "8136.T": {
+      "price": 920.7,
+      "currency": null,
+      "change_pct": 0.006229508196721361,
+      "source": "stooq",
+      "name": "三丽鸥 Sanrio"
+    },
+    "7832.T": {
+      "price": 3719.0,
+      "currency": null,
+      "change_pct": -0.005880780539962577,
+      "source": "stooq",
+      "name": "万代南梦宫 Bandai Namco"
+    },
+    "9896.HK": {
+      "price": 25.94,
+      "currency": null,
+      "change_pct": -0.0023076923076922585,
+      "source": "stooq",
+      "name": "名创优品 MINISO"
+    }
+  }
+}
