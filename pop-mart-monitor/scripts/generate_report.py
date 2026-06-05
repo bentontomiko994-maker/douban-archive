@@ -150,11 +150,42 @@ def section_peers(peers):
     return lines
 
 
+def load_quote_snapshot():
+    """行情快照可选；不存在或损坏则返回 None。"""
+    path = os.path.join(os.path.dirname(REPORTS_DIR), "data", "quote_snapshot.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            import json
+            return json.load(f)
+    except (FileNotFoundError, ValueError):
+        return None
+
+
+def section_quote(snap):
+    q = snap.get("quotes", {})
+    if not q:
+        return []
+    lines = ["## 五、实时行情快照", ""]
+    lines.append(f"_行情更新于 {snap.get('as_of', '—')}_")
+    lines.append("")
+    lines.append("| 代码 | 公司 | 现价 | 涨跌 | 实时市值(US$B) |")
+    lines.append("| --- | --- | --- | --- | --- |")
+    for sym, r in q.items():
+        cp = r.get("change_pct")
+        cp_s = f"{cp * 100:+.2f}%" if cp is not None else "—"
+        price = f"{r.get('price')} {r.get('currency') or ''}".strip()
+        mc = r.get("market_cap_usd_b")
+        lines.append(f"| {sym} | {r.get('name', '')} | {price} | {cp_s} | {num(mc)} |")
+    lines.append("")
+    return lines
+
+
 def main():
     fin = load("financials.json")
     ov = load("overseas_stores.json")
     peers = load("peers.json")
     sources = load("sources.json")
+    snap = load_quote_snapshot()
 
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     out = []
@@ -166,8 +197,10 @@ def main():
     out += section_same_store(fin)
     out += section_overseas(ov)
     out += section_peers(peers)
+    if snap:
+        out += section_quote(snap)
 
-    out.append("## 五、数据来源")
+    out.append("## 六、数据来源")
     out.append("")
     for s in sources.get("primary", []):
         out.append(f"- [一手] [{s['title']}]({s['url']}) — {s.get('publisher', '')}")

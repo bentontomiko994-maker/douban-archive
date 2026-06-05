@@ -1,6 +1,6 @@
 # 泡泡玛特 (Pop Mart, 9992.HK) 监控汇总报告
 
-_自动生成于 2026-06-05 02:31 UTC · 由 `scripts/generate_report.py` 基于 `data/` 渲染 · 非投资建议_
+_自动生成于 2026-06-05 02:42 UTC · 由 `scripts/generate_report.py` 基于 `data/` 渲染 · 非投资建议_
 
 ## 一、执行摘要（最新财报）
 
@@ -60,7 +60,7 @@ _自动生成于 2026-06-05 02:31 UTC · 由 `scripts/generate_report.py` 基于
 | 美泰 (Mattel) | MAT | 5.34 US$B(FY2025) | 4.08 B | 12.5 |
 | 三丽鸥 (Sanrio) | 8136.T | 0.933 US$B(FY) | 6.94 B | 27.4 |
 
-> 泡泡玛特估值说明：市值/PE 波动大，请以实时行情为准（占位值 ~US$30B，对应 ~HK$173 股价 / 2026-05-31）。
+> 泡泡玛特估值说明：市值/PE 波动大，请以实时行情为准（占位值 ~US$30B，对应 ~HK$173 股价 / 2026-05-31）。fetch_quote.py 会用 股价×shares_outstanding 现算实时市值。
 
 ### 4.2 中国潮玩 / IP 同行
 
@@ -76,7 +76,7 @@ _自动生成于 2026-06-05 02:31 UTC · 由 `scripts/generate_report.py` 基于
 
 **横向解读**：泡泡玛特 FY2025 营收（~US$5.1B）已接近美泰、超过孩之宝，但增速（+184.7%）与海外占比（43.8%）远高于传统巨头；其 IP 变现 + 高毛利模式更接近三丽鸥的轻资产授权逻辑，但自营零售与出海速度更激进。
 
-## 五、数据来源
+## 六、数据来源
 
 - [一手] [泡泡玛特 2025 年报 / 全年业绩公告](https://www.popmart.com/) — 泡泡玛特投资者关系
 - [一手] [INTERIM RESULTS ANNOUNCEMENT (6M ended 30 June 2025)](https://prod-out-res.popmart.com/cms/INTERIM_RESULTS_ANNOUNCEMENT_FOR_THE_SIX_MONTHS_ENDED_30_JUNE_2025_c6a7290528.pdf) — Pop Mart / HKEX
