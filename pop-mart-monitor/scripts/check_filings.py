@@ -18,6 +18,7 @@
     python3 scripts/check_filings.py --baseline # 仅建立/刷新基线，不触发提醒
 """
 import datetime
+import http.cookiejar
 import json
 import os
 import re
@@ -32,22 +33,37 @@ UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chr
 STOCK_CODE = "09992"
 FALLBACK_STOCK_ID = None  # 解析失败时的兜底（如已知可填）
 NEW_FILING_EXIT_CODE = 10
+SEARCH_PAGE = "https://www1.hkexnews.hk/search/titlesearch.xhtml?lang=en"
 PREFIX_URL = "https://www1.hkexnews.hk/search/prefix.do?callback=callback&lang=en&type=A&name={code}&market=SEHK"
 SEARCH_URL = "https://www1.hkexnews.hk/search/titlesearchservlet.do"
 
+# HKEX 披露易需要先访问搜索页拿到 JSESSIONID cookie，否则接口返回空。
+# 用带 cookie 罐的 opener，首次调用前自动“热身”握手。
+_OPENER = None
+
+
+def _get_opener():
+    global _OPENER
+    if _OPENER is None:
+        jar = http.cookiejar.CookieJar()
+        op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+        op.addheaders = [
+            ("User-Agent", UA),
+            ("Accept", "application/json, text/javascript, text/plain, */*"),
+            ("Accept-Language", "en-US,en;q=0.9,zh-CN;q=0.8"),
+            ("Referer", SEARCH_PAGE),
+            ("X-Requested-With", "XMLHttpRequest"),
+        ]
+        try:  # 热身：访问搜索页以获取会话 cookie
+            op.open(SEARCH_PAGE, timeout=30).read()
+        except Exception as e:
+            print(f"::warning:: HKEX 会话热身失败（继续尝试）：{e}")
+        _OPENER = op
+    return _OPENER
+
 
 def _get(url, timeout=30):
-    # HKEX 接口校验 Referer/Accept-Language，缺失会返回空响应（反爬）。
-    headers = {
-        "User-Agent": UA,
-        "Accept": "application/json, text/javascript, text/plain, */*",
-        "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8",
-        "Referer": "https://www1.hkexnews.hk/search/titlesearch.xhtml?lang=en",
-        "X-Requested-With": "XMLHttpRequest",
-    }
-    req = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return resp.read().decode("utf-8", "ignore")
+    return _get_opener().open(url, timeout=timeout).read().decode("utf-8", "ignore")
 
 
 def resolve_stock_id():
