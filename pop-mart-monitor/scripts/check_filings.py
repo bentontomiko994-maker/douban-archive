@@ -32,26 +32,36 @@ UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chr
 STOCK_CODE = "09992"
 FALLBACK_STOCK_ID = None  # 解析失败时的兜底（如已知可填）
 NEW_FILING_EXIT_CODE = 10
-PREFIX_URL = "https://www1.hkexnews.hk/search/prefix.do?lang=en&type=A&name={code}&market=SEHK"
+PREFIX_URL = "https://www1.hkexnews.hk/search/prefix.do?callback=callback&lang=en&type=A&name={code}&market=SEHK"
 SEARCH_URL = "https://www1.hkexnews.hk/search/titlesearchservlet.do"
 
 
 def _get(url, timeout=30):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json, text/plain, */*"})
+    # HKEX 接口校验 Referer/Accept-Language，缺失会返回空响应（反爬）。
+    headers = {
+        "User-Agent": UA,
+        "Accept": "application/json, text/javascript, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8",
+        "Referer": "https://www1.hkexnews.hk/search/titlesearch.xhtml?lang=en",
+        "X-Requested-With": "XMLHttpRequest",
+    }
+    req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.read().decode("utf-8", "ignore")
 
 
 def resolve_stock_id():
+    # prefix.do 用 JSONP 回调包裹，带上 callback 参数更稳；正则提取 stockId。
+    url = PREFIX_URL.format(code=STOCK_CODE)
     try:
-        raw = _get(PREFIX_URL.format(code=STOCK_CODE))
+        raw = _get(url)
     except Exception as e:
         print(f"::warning:: stockId 解析请求失败：{e}")
         return FALLBACK_STOCK_ID
     m = re.search(r'"stockId"\s*:\s*"?(\d+)"?', raw)
     if m:
         return m.group(1)
-    print(f"::warning:: 未能从 prefix.do 解析 stockId，原始片段：{raw[:300]}")
+    print(f"::warning:: 未能从 prefix.do 解析 stockId（len={len(raw)}），片段：{raw[:300]!r}")
     return FALLBACK_STOCK_ID
 
 

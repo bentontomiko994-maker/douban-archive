@@ -86,13 +86,17 @@ def from_stooq(stooq_sym):
 
 
 def fetch_one(sym, stooq_sym):
+    # 多源容错：Yahoo 在 CI 的共享 IP 常被限流(429)，Stooq 兜底。
+    # 仅当所有源都失败才告警，避免日志噪音。
+    errors = []
     for fn, arg in ((from_yahoo_v8, sym), (from_stooq, stooq_sym)):
         try:
             r = fn(arg)
             if r:
                 return r
         except Exception as e:
-            print(f"::warning:: {sym} 经 {fn.__name__} 抓取失败：{e}")
+            errors.append(f"{fn.__name__}: {e}")
+    print(f"::warning:: {sym} 所有数据源失败：{'; '.join(errors)}")
     return None
 
 
