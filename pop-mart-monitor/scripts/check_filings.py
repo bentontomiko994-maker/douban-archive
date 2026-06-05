@@ -34,8 +34,15 @@ STOCK_CODE = "09992"
 FALLBACK_STOCK_ID = None  # 解析失败时的兜底（如已知可填）
 NEW_FILING_EXIT_CODE = 10
 SEARCH_PAGE = "https://www1.hkexnews.hk/search/titlesearch.xhtml?lang=en"
-PREFIX_URL = "https://www1.hkexnews.hk/search/prefix.do?callback=callback&lang=en&type=A&name={code}&market=SEHK"
+PREFIX_BASE = "https://www1.hkexnews.hk/search/prefix.do"
 SEARCH_URL = "https://www1.hkexnews.hk/search/titlesearchservlet.do"
+# 不同查询形式各试一遍（autocomplete 对前导零/类型敏感）。
+PREFIX_CANDIDATES = [
+    {"lang": "en", "type": "A", "name": "09992", "market": "SEHK"},
+    {"lang": "en", "type": "A", "name": "9992", "market": "SEHK"},
+    {"lang": "en", "type": "A", "name": "POP MART", "market": "SEHK"},
+    {"lang": "en", "type": "S", "name": "09992", "market": "SEHK"},
+]
 
 # HKEX 披露易需要先访问搜索页拿到 JSESSIONID cookie，否则接口返回空。
 # 用带 cookie 罐的 opener，首次调用前自动“热身”握手。
@@ -67,17 +74,19 @@ def _get(url, timeout=30):
 
 
 def resolve_stock_id():
-    # prefix.do 用 JSONP 回调包裹，带上 callback 参数更稳；正则提取 stockId。
-    url = PREFIX_URL.format(code=STOCK_CODE)
-    try:
-        raw = _get(url)
-    except Exception as e:
-        print(f"::warning:: stockId 解析请求失败：{e}")
-        return FALLBACK_STOCK_ID
-    m = re.search(r'"stockId"\s*:\s*"?(\d+)"?', raw)
-    if m:
-        return m.group(1)
-    print(f"::warning:: 未能从 prefix.do 解析 stockId（len={len(raw)}），片段：{raw[:300]!r}")
+    # 依次尝试多种查询形式，记录各自响应，返回首个能解析出 stockId 的结果。
+    for params in PREFIX_CANDIDATES:
+        url = PREFIX_BASE + "?" + urllib.parse.urlencode(params)
+        try:
+            raw = _get(url)
+        except Exception as e:
+            print(f"::warning:: prefix.do 请求失败 name={params['name']!r} type={params['type']}：{e}")
+            continue
+        m = re.search(r'"stockId"\s*:\s*"?(\d+)"?', raw)
+        if m:
+            print(f"prefix.do 命中 name={params['name']!r} type={params['type']} -> stockId={m.group(1)}")
+            return m.group(1)
+        print(f"::warning:: prefix.do 未命中 name={params['name']!r} type={params['type']} (len={len(raw)})：{raw[:200]!r}")
     return FALLBACK_STOCK_ID
 
 
