@@ -1,6 +1,6 @@
 # 泡泡玛特 (Pop Mart, 9992.HK) 监控汇总报告
 
-_自动生成于 2026-06-05 02:31 UTC · 由 `scripts/generate_report.py` 基于 `data/` 渲染 · 非投资建议_
+_自动生成于 2026-06-05 02:33 UTC · 由 `scripts/generate_report.py` 基于 `data/` 渲染 · 非投资建议_
 
 ## 一、执行摘要（最新财报）
 
