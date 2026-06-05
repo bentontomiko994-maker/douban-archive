@@ -1,0 +1,93 @@
+{
+  "_comment": "对标公司数据，用于横向对比。营收单位见每条 revenue_unit。市值单位：十亿美元(US$B)。pe 为最新 TTM 市盈率。valuation_as_of 标注估值/市值数据日期，财务为最近一个财年。所有估值类字段建议用 scripts/fetch_quote.py 或券商行情定期刷新。",
+  "valuation_as_of": "2026-06-01",
+  "anchor": {
+    "name": "泡泡玛特 (Pop Mart)",
+    "ticker": "9992.HK",
+    "category": "中国潮玩/IP",
+    "revenue": 5.1,
+    "revenue_unit": "US$B",
+    "revenue_local": "371.2 亿元 (FY2025)",
+    "revenue_yoy": 1.847,
+    "overseas_share": 0.438,
+    "gross_margin": 0.70,
+    "market_cap_usd_b": 30.0,
+    "pe": null,
+    "note": "市值/PE 波动大，请以实时行情为准（占位值 ~US$30B，对应 ~HK$173 股价 / 2026-05-31）。"
+  },
+  "peers": {
+    "china_trendy_toys": [
+      {
+        "name": "名创优品集团 (MINISO Group)",
+        "ticker": "MNSO / 9896.HK",
+        "revenue": 21.44, "revenue_unit": "亿元(集团 FY2025)",
+        "revenue_yoy": 0.262,
+        "overseas_revenue": "86.3 亿元 (名创品牌, +29.3%)",
+        "global_stores": 8485,
+        "market_cap_usd_b": null,
+        "pe": null,
+        "note": "渠道型零售+IP，旗下 TOP TOY 直接对标泡泡玛特潮玩业务。"
+      },
+      {
+        "name": "TOP TOY (名创优品旗下)",
+        "ticker": "—（并入 MNSO）",
+        "revenue": 19.2, "revenue_unit": "亿元(FY2025)",
+        "revenue_yoy": 0.948,
+        "global_stores": 334,
+        "overseas_stores": 30,
+        "note": "中国潮玩集合店，海外门店分布日本、泰国、马来西亚、印尼等。"
+      },
+      {
+        "name": "52TOYS",
+        "ticker": "拟港股 IPO",
+        "revenue": 6.3, "revenue_unit": "亿元(潮玩, 2024)",
+        "global_stores": null,
+        "note": "以经销渠道为主，自有+授权 IP；规模显著小于泡泡玛特。"
+      }
+    ],
+    "global_toy_ip_giants": [
+      {
+        "name": "万代南梦宫 (Bandai Namco)",
+        "ticker": "7832.T",
+        "revenue": 8.5, "revenue_unit": "US$B(估)",
+        "market_cap_usd_b": 15.0,
+        "pe": null,
+        "note": "玩具+游戏+IP 综合体，全球 IP 运营标杆。"
+      },
+      {
+        "name": "孩之宝 (Hasbro)",
+        "ticker": "HAS",
+        "revenue": 4.1, "revenue_unit": "US$B(FY2024)",
+        "market_cap_usd_b": 12.91,
+        "pe": 18.5,
+        "note": "传统玩具巨头，向 IP/游戏(MTG)转型。"
+      },
+      {
+        "name": "美泰 (Mattel)",
+        "ticker": "MAT",
+        "revenue": 5.34, "revenue_unit": "US$B(FY2025)",
+        "revenue_yoy": -0.006,
+        "market_cap_usd_b": 4.08,
+        "pe": 12.5,
+        "note": "Barbie/Hot Wheels，营收停滞、估值偏低。"
+      },
+      {
+        "name": "三丽鸥 (Sanrio)",
+        "ticker": "8136.T",
+        "revenue": 0.933, "revenue_unit": "US$B(FY)",
+        "market_cap_usd_b": 6.94,
+        "pe": 27.4,
+        "note": "Hello Kitty 等 IP 授权模式，轻资产高估值，可类比泡泡玛特 IP 变现。"
+      }
+    ],
+    "going_global_retail_comps": [
+      {
+        "name": "名创优品品牌 (MINISO brand)",
+        "ticker": "MNSO",
+        "overseas_revenue": "86.3 亿元 (+29.3%)",
+        "global_stores": 8485,
+        "note": "中国零售出海代表，海外门店与同店增长可对照泡泡玛特扩张节奏。"
+      }
+    ]
+  }
+}

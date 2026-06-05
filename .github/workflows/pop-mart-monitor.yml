@@ -1,0 +1,87 @@
+name: Pop Mart Monitor
+
+# 泡泡玛特监控自动化：
+#  - 定时刷新行情快照与汇总报告并回写仓库
+#  - 检测到新财报/公告时自动开 issue 提醒更新数据
+#
+# 重要：GitHub 的 schedule 定时器只在【默认分支】上生效。
+# 本工作流合并到 main 后定时任务才会真正触发；在功能分支上可用
+# workflow_dispatch 手动运行，或 push 触发。
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: ["**"]
+    paths:
+      - "pop-mart-monitor/**"
+      - ".github/workflows/pop-mart-monitor.yml"
+  schedule:
+    # 平日基线：每周一 01:00 UTC
+    - cron: "0 1 * * 1"
+    # 财报季加密（3 月 / 8 月，泡泡玛特年报与中报窗口）：每日 01:00 UTC
+    - cron: "0 1 * 3,8 *"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: pop-mart-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: 抓取行情快照（失败不阻塞）
+        run: python3 pop-mart-monitor/scripts/fetch_quote.py || true
+
+      - name: 检测新财报/公告
+        id: filings
+        run: |
+          set +e
+          python3 pop-mart-monitor/scripts/check_filings.py
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: 重新生成汇总报告
+        run: python3 pop-mart-monitor/scripts/generate_report.py
+
+      - name: 回写更新（报告 / 行情 / 公告基线）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pop-mart-monitor/reports pop-mart-monitor/data/quote_snapshot.json pop-mart-monitor/data/seen_filings.json
+          if git diff --cached --quiet; then
+            echo "无变更，跳过提交。"
+          else
+            git commit -m "chore(pop-mart): 自动刷新监控报告与数据快照"
+            git push
+          fi
+
+      - name: 发现新公告时开 issue 提醒
+        if: steps.filings.outputs.new_filing == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLES: ${{ steps.filings.outputs.new_titles }}
+        run: |
+          gh issue create \
+            --title "📢 泡泡玛特新公告/财报检测：请更新数据并刷新汇总" \
+            --body "检测到泡泡玛特发布了新的 HKEX 公告：
+
+          ${TITLES}
+
+          **下一步**：
+          1. 若为业绩/财报，更新 \`pop-mart-monitor/data/financials.json\` 与 \`overseas_stores.json\`（追加新期次）。
+          2. 视情况刷新 \`peers.json\` 估值与对标数据。
+          3. 运行 \`python3 pop-mart-monitor/scripts/generate_report.py\` 重新生成报告。
+          4. 提交并关闭本 issue。
+
+          _由 Pop Mart Monitor 工作流自动创建。_" \
+            --label "pop-mart" || echo "开 issue 失败（可能缺少 label 或权限），不阻塞工作流。"

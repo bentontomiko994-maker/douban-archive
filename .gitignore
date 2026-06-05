@@ -5,3 +5,7 @@ build/
 node_modules/
 *.crx
 *.pem
+
+# pop-mart-monitor
+__pycache__/
+*.pyc
