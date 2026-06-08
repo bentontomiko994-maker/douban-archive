@@ -5,3 +5,7 @@ build/
 node_modules/
 *.crx
 *.pem
+
+# Python
+__pycache__/
+*.pyc

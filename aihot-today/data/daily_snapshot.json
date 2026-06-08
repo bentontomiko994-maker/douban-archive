@@ -1,0 +1,146 @@
+{
+  "as_of": "2026-06-08T02:49:11.493040+00:00",
+  "date": "2026-06-08",
+  "hn_stories": [],
+  "hf_papers": [
+    {
+      "title": "When Tools Fail: Benchmarking Dynamic Replanning and Anomaly Recovery in LLM Agents",
+      "authors": [
+        "Dongsheng Zhu",
+        "Xuchen Ma",
+        "Yucheng Shen",
+        "Xiang Li"
+      ],
+      "abstract": "Existing benchmarks evaluate Tool-Integrated Reasoning (TIR) in LLMs on idealized ''happy paths'', largely overlooking real-world tool failures. We introduce ToolMaze, a benchmark for dynamic path discovery and error recovery in TIR agents. To separate systematic replanning from blind trial-and-erro…",
+      "url": "https://huggingface.co/papers/2606.05806",
+      "arxiv_url": "https://arxiv.org/abs/2606.05806",
+      "upvotes": 1,
+      "published": "2026-06-04T00:00:00.000Z"
+    },
+    {
+      "title": "When Gradients Collide: Failure Modes of Multi-Objective Prompt Optimization for LLM Judges",
+      "authors": [
+        "Parth Darshan",
+        "Abhishek Divekar"
+      ],
+      "abstract": "Customizing an LLM judge to a specific task or domain often involves optimizing its prompt across multiple evaluation criteria simultaneously. Textual gradient methods automate this for a single judge criterion, however they produce natural-language critiques, not numerical vectors. Thus, the confli…",
+      "url": "https://huggingface.co/papers/2605.26046",
+      "arxiv_url": "https://arxiv.org/abs/2605.26046",
+      "upvotes": 1,
+      "published": "2026-05-25T00:00:00.000Z"
+    },
+    {
+      "title": "UniSHARP: Universal Sharp Monocular View Synthesis",
+      "authors": [
+        "Meixi Song",
+        "Dizhe Zhang",
+        "Hao Ren",
+        "Ruiyang Zhang"
+      ],
+      "abstract": "In this work, we focus on extending SHARP, the popular photorealistic view synthesis method, for universal monocular rendering across a continuum of camera systems, from conventional perspective cameras to wide-field-of-view, fisheye and omnidirectional panoramic settings. To overcome the pinhole-sp…",
+      "url": "https://huggingface.co/papers/2606.07514",
+      "arxiv_url": "https://arxiv.org/abs/2606.07514",
+      "upvotes": 1,
+      "published": "2026-06-05T00:00:00.000Z"
+    },
+    {
+      "title": "WorldBench: A Challenging and Visually Diverse Multimodal Reasoning Benchmark",
+      "authors": [
+        "Yida Yin",
+        "Harish Krishnakumar",
+        "Chung Peng Lee",
+        "Boya Zeng"
+      ],
+      "abstract": "In real-world applications, models are expected to perform reliably across diverse settings. Yet, many existing multimodal benchmarks expand task types without capturing the visual diversity needed to handle open-ended visual inputs. We present WorldBench, a challenging and visually diverse reasonin…",
+      "url": "https://huggingface.co/papers/2606.06538",
+      "arxiv_url": "https://arxiv.org/abs/2606.06538",
+      "upvotes": 1,
+      "published": "2026-06-04T00:00:00.000Z"
+    },
+    {
+      "title": "OpenSkill: Open-World Self-Evolution for LLM Agents",
+      "authors": [
+        "Zhiling Yan",
+        "Dingjie Song",
+        "Hanrong Zhang",
+        "Wei Liang"
+      ],
+      "abstract": "Self-evolving agents requires adaptation after deployment, but existing approaches assume a usable learning loop, such as curated skills, successful trajectories, or verifier signals. Real open-world deployments may provide none of these, offering only a task prompt. In this work, we study open-worl…",
+      "url": "https://huggingface.co/papers/2606.06741",
+      "arxiv_url": "https://arxiv.org/abs/2606.06741",
+      "upvotes": 1,
+      "published": "2026-06-04T00:00:00.000Z"
+    },
+    {
+      "title": "Socratic-SWE: Self-Evolving Coding Agents via Trace-Derived Agent Skills",
+      "authors": [
+        "Chuan Xiao",
+        "Zhengbo Jiao",
+        "Shaobo Wang",
+        "Wei Wang"
+      ],
+      "abstract": "LLM-driven software engineering agents have become a central testbed for real-world language-model capability, yet their training remains limited by the availability of high-quality SWE tasks. Existing synthetic data methods typically create tasks through fixed mutation or bug-injection procedures, …",
+      "url": "https://huggingface.co/papers/2606.07412",
+      "arxiv_url": "https://arxiv.org/abs/2606.07412",
+      "upvotes": 1,
+      "published": "2026-06-05T00:00:00.000Z"
+    },
+    {
+      "title": "dots.tts Technical Report",
+      "authors": [
+        "Shi Lian",
+        "Changtao Li",
+        "Bohan Li",
+        "Hankun Wang"
+      ],
+      "abstract": "We present dots.tts, a 2B-parameter continuous autoregressive text-to-speech (TTS) foundation model that models speech in a continuous latent space. Compared with existing continuous autoregressive models, our key innovations are threefold. First, we train an AudioVAE with multiple objectives to bui…",
+      "url": "https://huggingface.co/papers/2606.07080",
+      "arxiv_url": "https://arxiv.org/abs/2606.07080",
+      "upvotes": 1,
+      "published": "2026-06-05T00:00:00.000Z"
+    },
+    {
+      "title": "BRepCLIP: Contrastive Multimodal Pretraining on BRep Primitives for CAD Understanding",
+      "authors": [
+        "Muhammad Usama",
+        "Didier Stricker",
+        "Mohammad Sadil Khan",
+        "Muhammad Zeshan Afzal"
+      ],
+      "abstract": "Learning representations of CAD models is a largely open problem. While 3D representation learning has flourished around point clouds and meshes, the native format of CAD - boundary representations BReps, which encodes exact parametric surfaces, curves, and their topology, has received little attent…",
+      "url": "https://huggingface.co/papers/2606.05515",
+      "arxiv_url": "https://arxiv.org/abs/2606.05515",
+      "upvotes": 2,
+      "published": "2026-06-03T00:00:00.000Z"
+    },
+    {
+      "title": "Regret Minimization with Adaptive Opponents in Repeated Games",
+      "authors": [
+        "Mingyang Liu",
+        "Asuman Ozdaglar",
+        "Tiancheng Yu",
+        "Kaiqing Zhang"
+      ],
+      "abstract": "In this paper, we study regret minimization in repeated games with adaptive opponents who can respond based on histories of play. The standard metric of external regret in online learning is known to fail to capture such adaptivity. To account for players' counterfactual reasoning, we introduce {\\tt…",
+      "url": "https://huggingface.co/papers/2606.06486",
+      "arxiv_url": "https://arxiv.org/abs/2606.06486",
+      "upvotes": 2,
+      "published": "2026-06-04T00:00:00.000Z"
+    },
+    {
+      "title": "The Road Ahead in Autonomous Driving: The KITScenes Multimodal Dataset",
+      "authors": [
+        "Richard Schwarzkopf",
+        "Fabian Immel",
+        "Alexander Blumberg",
+        "Jonas Merkert"
+      ],
+      "abstract": "Existing autonomous driving datasets have enabled major progress, but fall short in sensor fidelity, map completeness, or geographic diversity. We present KITScenes Multimodal, a European dataset built around high-fidelity sensors and maps. Our fully synchronized sensor suite combines high-resolutio…",
+      "url": "https://huggingface.co/papers/2606.02956",
+      "arxiv_url": "https://arxiv.org/abs/2606.02956",
+      "upvotes": 3,
+      "published": "2026-06-01T00:00:00.000Z"
+    }
+  ],
+  "arxiv_papers": []
+}
