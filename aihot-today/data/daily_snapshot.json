@@ -1,166 +1,146 @@
 {
-  "as_of": "2026-06-08T08:00:00+00:00",
+  "as_of": "2026-06-08T02:49:11.493040+00:00",
   "date": "2026-06-08",
-  "_note": "初始种子数据（来自人工整理）。GitHub Actions 工作流运行后将自动用实时抓取数据覆盖此文件。",
-  "hn_stories": [
-    {
-      "title": "Anthropic releases Claude 4 with extended thinking and 200K context",
-      "url": "https://www.anthropic.com/news",
-      "points": 1240,
-      "comments": 487,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-08T06:00:00Z"
-    },
-    {
-      "title": "GPT-5 system card: capabilities, limitations and safety evaluations",
-      "url": "https://openai.com/research",
-      "points": 980,
-      "comments": 612,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-08T04:30:00Z"
-    },
-    {
-      "title": "Gemini 2.0 Ultra achieves state-of-the-art on MMLU and coding benchmarks",
-      "url": "https://deepmind.google/technologies/gemini/",
-      "points": 845,
-      "comments": 321,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-08T05:00:00Z"
-    },
-    {
-      "title": "Show HN: I built a local-first RAG pipeline using only stdlib (no langchain)",
-      "url": "https://github.com/",
-      "points": 723,
-      "comments": 204,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-08T03:00:00Z"
-    },
-    {
-      "title": "Meta releases Llama 4 Scout and Maverick open-weight models",
-      "url": "https://llama.meta.com/",
-      "points": 698,
-      "comments": 289,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-07T22:00:00Z"
-    },
-    {
-      "title": "Why transformers are still the dominant architecture in 2026",
-      "url": "https://arxiv.org/",
-      "points": 567,
-      "comments": 143,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-08T01:00:00Z"
-    },
-    {
-      "title": "AI agent frameworks compared: LangGraph vs AutoGen vs CrewAI in production",
-      "url": "https://github.com/",
-      "points": 534,
-      "comments": 178,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-07T20:00:00Z"
-    },
-    {
-      "title": "OpenAI o3-mini available to all API users, pricing 80% lower than o3",
-      "url": "https://openai.com/api",
-      "points": 489,
-      "comments": 267,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-07T18:00:00Z"
-    },
-    {
-      "title": "EU AI Act enforcement begins: what developers need to know",
-      "url": "https://ec.europa.eu/",
-      "points": 445,
-      "comments": 312,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-07T16:00:00Z"
-    },
-    {
-      "title": "Mistral releases Codestral 2.5: 128K context, optimized for code generation",
-      "url": "https://mistral.ai/",
-      "points": 398,
-      "comments": 156,
-      "hn_url": "https://news.ycombinator.com/",
-      "created_at": "2026-06-08T02:00:00Z"
-    }
-  ],
+  "hn_stories": [],
   "hf_papers": [
     {
-      "title": "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision",
-      "authors": ["Jay Shah", "Ganesh Bikshandi", "Ying Zhang", "Vijay Thakkar"],
-      "abstract": "We present FlashAttention-3 that processes attention in a way that is 2x faster than FlashAttention-2 with better numerical accuracy. We propose three main ideas: exploit asynchrony of the Tensor Cores and TMA to overlap computation and data movement…",
-      "url": "https://huggingface.co/papers/2407.08608",
-      "arxiv_url": "https://arxiv.org/abs/2407.08608",
-      "upvotes": 312,
-      "published": "2026-06-08T00:00:00Z"
+      "title": "When Tools Fail: Benchmarking Dynamic Replanning and Anomaly Recovery in LLM Agents",
+      "authors": [
+        "Dongsheng Zhu",
+        "Xuchen Ma",
+        "Yucheng Shen",
+        "Xiang Li"
+      ],
+      "abstract": "Existing benchmarks evaluate Tool-Integrated Reasoning (TIR) in LLMs on idealized ''happy paths'', largely overlooking real-world tool failures. We introduce ToolMaze, a benchmark for dynamic path discovery and error recovery in TIR agents. To separate systematic replanning from blind trial-and-erro…",
+      "url": "https://huggingface.co/papers/2606.05806",
+      "arxiv_url": "https://arxiv.org/abs/2606.05806",
+      "upvotes": 1,
+      "published": "2026-06-04T00:00:00.000Z"
     },
     {
-      "title": "MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs",
-      "authors": ["Ziheng Jiang", "Haibin Lin", "Yinmin Zhong", "Qi Huang"],
-      "abstract": "We present the design, implementation, and engineering experience in building and operating MegaScale, a production system for training large language models (LLMs) at the scale of more than 10,000 GPUs…",
-      "url": "https://huggingface.co/papers/2402.15627",
-      "arxiv_url": "https://arxiv.org/abs/2402.15627",
-      "upvotes": 278,
-      "published": "2026-06-08T00:00:00Z"
+      "title": "When Gradients Collide: Failure Modes of Multi-Objective Prompt Optimization for LLM Judges",
+      "authors": [
+        "Parth Darshan",
+        "Abhishek Divekar"
+      ],
+      "abstract": "Customizing an LLM judge to a specific task or domain often involves optimizing its prompt across multiple evaluation criteria simultaneously. Textual gradient methods automate this for a single judge criterion, however they produce natural-language critiques, not numerical vectors. Thus, the confli…",
+      "url": "https://huggingface.co/papers/2605.26046",
+      "arxiv_url": "https://arxiv.org/abs/2605.26046",
+      "upvotes": 1,
+      "published": "2026-05-25T00:00:00.000Z"
     },
     {
-      "title": "Long-Context Language Modeling with Parallel Context Encoders",
-      "authors": ["Ben Hutchinson", "Pradeep Dasigi", "Harsh Jhamtani", "Nelson Liu"],
-      "abstract": "We present a new approach to long-context language modeling that enables efficient processing of very long inputs by encoding multiple parallel segments and fusing them through a cross-attention mechanism…",
-      "url": "https://huggingface.co/papers/",
-      "arxiv_url": "https://arxiv.org/",
-      "upvotes": 198,
-      "published": "2026-06-08T00:00:00Z"
+      "title": "UniSHARP: Universal Sharp Monocular View Synthesis",
+      "authors": [
+        "Meixi Song",
+        "Dizhe Zhang",
+        "Hao Ren",
+        "Ruiyang Zhang"
+      ],
+      "abstract": "In this work, we focus on extending SHARP, the popular photorealistic view synthesis method, for universal monocular rendering across a continuum of camera systems, from conventional perspective cameras to wide-field-of-view, fisheye and omnidirectional panoramic settings. To overcome the pinhole-sp…",
+      "url": "https://huggingface.co/papers/2606.07514",
+      "arxiv_url": "https://arxiv.org/abs/2606.07514",
+      "upvotes": 1,
+      "published": "2026-06-05T00:00:00.000Z"
     },
     {
-      "title": "VideoAgent: Long-form Video Understanding with Large Language Model as Agent",
-      "authors": ["Yue Fan", "Xiaojian Ma", "Rujie Wu", "Yuntao Du"],
-      "abstract": "We present VideoAgent, a novel multi-agent framework for long-form video understanding that leverages LLMs to iteratively gather and interpret video information through structured tool use…",
-      "url": "https://huggingface.co/papers/",
-      "arxiv_url": "https://arxiv.org/",
-      "upvotes": 167,
-      "published": "2026-06-08T00:00:00Z"
+      "title": "WorldBench: A Challenging and Visually Diverse Multimodal Reasoning Benchmark",
+      "authors": [
+        "Yida Yin",
+        "Harish Krishnakumar",
+        "Chung Peng Lee",
+        "Boya Zeng"
+      ],
+      "abstract": "In real-world applications, models are expected to perform reliably across diverse settings. Yet, many existing multimodal benchmarks expand task types without capturing the visual diversity needed to handle open-ended visual inputs. We present WorldBench, a challenging and visually diverse reasonin…",
+      "url": "https://huggingface.co/papers/2606.06538",
+      "arxiv_url": "https://arxiv.org/abs/2606.06538",
+      "upvotes": 1,
+      "published": "2026-06-04T00:00:00.000Z"
     },
     {
-      "title": "Mixture of Experts with Expert Choice Routing",
-      "authors": ["Yanqi Zhou", "Tao Lei", "Hanxiao Liu", "Nan Du"],
-      "abstract": "Sparsely-activated Mixture of Experts (MoE) have emerged as a popular technique to scale model capacity without proportional compute increases. We present Expert Choice routing which achieves better load balancing and higher accuracy…",
-      "url": "https://huggingface.co/papers/",
-      "arxiv_url": "https://arxiv.org/",
-      "upvotes": 145,
-      "published": "2026-06-08T00:00:00Z"
+      "title": "OpenSkill: Open-World Self-Evolution for LLM Agents",
+      "authors": [
+        "Zhiling Yan",
+        "Dingjie Song",
+        "Hanrong Zhang",
+        "Wei Liang"
+      ],
+      "abstract": "Self-evolving agents requires adaptation after deployment, but existing approaches assume a usable learning loop, such as curated skills, successful trajectories, or verifier signals. Real open-world deployments may provide none of these, offering only a task prompt. In this work, we study open-worl…",
+      "url": "https://huggingface.co/papers/2606.06741",
+      "arxiv_url": "https://arxiv.org/abs/2606.06741",
+      "upvotes": 1,
+      "published": "2026-06-04T00:00:00.000Z"
+    },
+    {
+      "title": "Socratic-SWE: Self-Evolving Coding Agents via Trace-Derived Agent Skills",
+      "authors": [
+        "Chuan Xiao",
+        "Zhengbo Jiao",
+        "Shaobo Wang",
+        "Wei Wang"
+      ],
+      "abstract": "LLM-driven software engineering agents have become a central testbed for real-world language-model capability, yet their training remains limited by the availability of high-quality SWE tasks. Existing synthetic data methods typically create tasks through fixed mutation or bug-injection procedures, …",
+      "url": "https://huggingface.co/papers/2606.07412",
+      "arxiv_url": "https://arxiv.org/abs/2606.07412",
+      "upvotes": 1,
+      "published": "2026-06-05T00:00:00.000Z"
+    },
+    {
+      "title": "dots.tts Technical Report",
+      "authors": [
+        "Shi Lian",
+        "Changtao Li",
+        "Bohan Li",
+        "Hankun Wang"
+      ],
+      "abstract": "We present dots.tts, a 2B-parameter continuous autoregressive text-to-speech (TTS) foundation model that models speech in a continuous latent space. Compared with existing continuous autoregressive models, our key innovations are threefold. First, we train an AudioVAE with multiple objectives to bui…",
+      "url": "https://huggingface.co/papers/2606.07080",
+      "arxiv_url": "https://arxiv.org/abs/2606.07080",
+      "upvotes": 1,
+      "published": "2026-06-05T00:00:00.000Z"
+    },
+    {
+      "title": "BRepCLIP: Contrastive Multimodal Pretraining on BRep Primitives for CAD Understanding",
+      "authors": [
+        "Muhammad Usama",
+        "Didier Stricker",
+        "Mohammad Sadil Khan",
+        "Muhammad Zeshan Afzal"
+      ],
+      "abstract": "Learning representations of CAD models is a largely open problem. While 3D representation learning has flourished around point clouds and meshes, the native format of CAD - boundary representations BReps, which encodes exact parametric surfaces, curves, and their topology, has received little attent…",
+      "url": "https://huggingface.co/papers/2606.05515",
+      "arxiv_url": "https://arxiv.org/abs/2606.05515",
+      "upvotes": 2,
+      "published": "2026-06-03T00:00:00.000Z"
+    },
+    {
+      "title": "Regret Minimization with Adaptive Opponents in Repeated Games",
+      "authors": [
+        "Mingyang Liu",
+        "Asuman Ozdaglar",
+        "Tiancheng Yu",
+        "Kaiqing Zhang"
+      ],
+      "abstract": "In this paper, we study regret minimization in repeated games with adaptive opponents who can respond based on histories of play. The standard metric of external regret in online learning is known to fail to capture such adaptivity. To account for players' counterfactual reasoning, we introduce {\\tt…",
+      "url": "https://huggingface.co/papers/2606.06486",
+      "arxiv_url": "https://arxiv.org/abs/2606.06486",
+      "upvotes": 2,
+      "published": "2026-06-04T00:00:00.000Z"
+    },
+    {
+      "title": "The Road Ahead in Autonomous Driving: The KITScenes Multimodal Dataset",
+      "authors": [
+        "Richard Schwarzkopf",
+        "Fabian Immel",
+        "Alexander Blumberg",
+        "Jonas Merkert"
+      ],
+      "abstract": "Existing autonomous driving datasets have enabled major progress, but fall short in sensor fidelity, map completeness, or geographic diversity. We present KITScenes Multimodal, a European dataset built around high-fidelity sensors and maps. Our fully synchronized sensor suite combines high-resolutio…",
+      "url": "https://huggingface.co/papers/2606.02956",
+      "arxiv_url": "https://arxiv.org/abs/2606.02956",
+      "upvotes": 3,
+      "published": "2026-06-01T00:00:00.000Z"
     }
   ],
-  "arxiv_papers": [
-    {
-      "title": "Scaling Laws for Neural Language Models",
-      "url": "https://arxiv.org/abs/2001.08361",
-      "abstract": "We study empirical scaling laws for language model performance on the cross-entropy loss. The loss scales as a power-law with model size, dataset size, and the amount of compute used for training…",
-      "category": "cs.LG"
-    },
-    {
-      "title": "Constitutional AI: Harmlessness from AI Feedback",
-      "url": "https://arxiv.org/abs/2212.08073",
-      "abstract": "As AI systems become more capable, we would like to enlist their help to supervise other AIs. We experiment with methods for training a harmless AI assistant through self-improvement…",
-      "category": "cs.AI"
-    },
-    {
-      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
-      "url": "https://arxiv.org/abs/2210.03629",
-      "abstract": "While large language models (LLMs) have demonstrated impressive performance across tasks in language understanding and interactive decision making, their strategies for doing so may not be optimal…",
-      "category": "cs.CL"
-    },
-    {
-      "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
-      "url": "https://arxiv.org/abs/2302.04761",
-      "abstract": "Language models (LMs) exhibit remarkable abilities to solve new tasks from just a few examples or textual instructions, especially at scale. We show that LMs can teach themselves to use external tools via simple APIs…",
-      "category": "cs.CL"
-    },
-    {
-      "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
-      "url": "https://arxiv.org/abs/2305.18290",
-      "abstract": "While large language models (LLMs) are powerful, training them to follow complex instructions requires reward modeling and reinforcement learning. We propose DPO, a simpler and more stable approach…",
-      "category": "cs.LG"
-    }
-  ]
+  "arxiv_papers": []
 }
