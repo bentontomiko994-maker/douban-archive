@@ -1,0 +1,53 @@
+name: AI 今日热榜
+
+# 每日自动抓取 AI 热点资讯并生成汇总报告，回写仓库。
+#
+# 重要：GitHub 的 schedule 定时器只在【默认分支】上生效。
+# 本工作流合并到 main 后定时任务才会真正触发；在功能分支上可用
+# workflow_dispatch 手动运行，或 push 触发。
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: ["**"]
+    paths:
+      - "aihot-today/**"
+      - ".github/workflows/aihot-today.yml"
+  schedule:
+    # 每日 08:00 UTC（北京时间 16:00）
+    - cron: "0 8 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aihot-today
+  cancel-in-progress: false
+
+jobs:
+  fetch-and-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: 抓取今日 AI 热点（失败不阻塞）
+        run: python3 aihot-today/scripts/fetch_news.py || true
+
+      - name: 生成汇总报告
+        run: python3 aihot-today/scripts/generate_report.py
+
+      - name: 回写更新（快照 + 报告）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add aihot-today/data/daily_snapshot.json aihot-today/reports/
+          if git diff --cached --quiet; then
+            echo "无变更，跳过提交。"
+          else
+            git commit -m "chore(aihot): 自动刷新 AI 今日热榜报告与数据快照"
+            git push
+          fi

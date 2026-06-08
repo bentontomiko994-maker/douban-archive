@@ -1,0 +1,24 @@
+{
+  "retrieved": "2026-06-08",
+  "sources": [
+    {
+      "name": "Hacker News (AI Stories)",
+      "url": "https://news.ycombinator.com/",
+      "api": "https://hn.algolia.com/api/v1/search",
+      "desc": "HN 社区 AI/ML 相关热门讨论，Algolia Search API（公开，无需鉴权）"
+    },
+    {
+      "name": "HuggingFace Daily Papers",
+      "url": "https://huggingface.co/papers",
+      "api": "https://huggingface.co/api/daily_papers",
+      "desc": "HuggingFace 每日精选 AI 论文（公开 API，无需鉴权）"
+    },
+    {
+      "name": "arXiv cs.AI / cs.LG / cs.CL",
+      "url": "https://arxiv.org/",
+      "api": "http://export.arxiv.org/rss/cs.AI",
+      "desc": "arXiv AI/机器学习/自然语言处理分类最新预印本（RSS 订阅）"
+    }
+  ],
+  "disclaimer": "本报告由公开 API 自动抓取生成，仅供信息参考。论文摘要来自原始发布机构，新闻来自 Hacker News 社区。内容版权归原作者所有。"
+}
