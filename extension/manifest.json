@@ -15,6 +15,7 @@
     "https://book.douban.com/*",
     "https://movie.douban.com/*",
     "https://music.douban.com/*",
-    "https://www.douban.com/*"
+    "https://www.douban.com/*",
+    "https://aihot.virxact.com/*"
   ]
 }
